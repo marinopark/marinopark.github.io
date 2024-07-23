@@ -12,10 +12,12 @@
 <script type="module">
     import * as THREE from '//unpkg.com/three/build/three.module.js';
 
+    const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
+
     const NODE_REL_SIZE = 1;
     const Graph = ForceGraph3D({ antialias: true, alpha: true })(document.getElementById('3d-graph'))
-        .jsonUrl('./miserables.json')
-        .dagLevelDistance(4)
+        .jsonUrl('./korean_royal_family.json')
+        .linkResolution(12)
         .backgroundColor('#101020')
         .nodeRelSize(NODE_REL_SIZE)
         .nodeLabel('name')
@@ -37,6 +39,14 @@
             node.fx = node.x;
             node.fy = node.y;
             node.fz = node.z;
+        })
+        .nodeThreeObject(({ img }) => {
+            const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
+            imgTexture.colorSpace = THREE.SRGBColorSpace;
+            const material = new THREE.SpriteMaterial({ map: imgTexture });
+            const sprite = new THREE.Sprite(material);
+            sprite.scale.set(12, 12);
+            return sprite;
         })
         // .nodeThreeObject((node) => {
         //     const group = new THREE.Group();
