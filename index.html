@@ -24,8 +24,10 @@
         .onLinkRightClick(link => alert(link.source.id + ' -> ' + link.target.id))
         // .linkDirectionalArrowLength(7)
         // .linkDirectionalArrowRelPos(1)
+        .nodeRelSize(6)
+        .linkWidth(2)
         .linkDirectionalParticles("value")
-        .linkDirectionalParticleWidth(0.2)
+        .linkDirectionalParticleWidth(0.8)
         .linkDirectionalParticleSpeed(d => d.value * 0.0005)
         .linkColor(link => {
             const colors = ['#FFA500', '#E5AE27', '#CCB749', '#B2C06B', '#99C98D', '#7FD2AF', '#66DBD1', '#4CE4F3', '#33EDFF', '#87CEEB'];
