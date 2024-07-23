@@ -44,6 +44,7 @@
             const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
             imgTexture.colorSpace = THREE.SRGBColorSpace;
             const material = new THREE.SpriteMaterial({ map: imgTexture });
+            material.transparent = true;
             const sprite = new THREE.Sprite(material);
             sprite.scale.set(12, 12);
             return sprite;
