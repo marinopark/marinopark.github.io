@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NDFC - People Network Example</title>
+    <script src="./3d-force-graph.js"></script>
+</head>
+<body>
+<div id="3d-graph"></div>
+
+<script type="module">
+    import * as THREE from '//unpkg.com/three/build/three.module.js';
+
+    const NODE_REL_SIZE = 1;
+    const Graph = ForceGraph3D({ antialias: true, alpha: true })(document.getElementById('3d-graph'))
+        .jsonUrl('./miserables.json')
+        .dagLevelDistance(4)
+        .backgroundColor('#101020')
+        .nodeRelSize(NODE_REL_SIZE)
+        .nodeLabel('name')
+        .nodeAutoColorBy('group')
+        .onNodeClick(node => alert('id : ' + node.id + '클릭!'))
+        .onLinkRightClick(link => alert(link.source.id + ' -> ' + link.target.id))
+        // .linkDirectionalArrowLength(7)
+        // .linkDirectionalArrowRelPos(1)
+        .linkDirectionalParticles("value")
+        .linkDirectionalParticleWidth(0.2)
+        .linkDirectionalParticleSpeed(d => d.value * 0.0005)
+        .linkColor(link => {
+            const colors = ['#FFA500', '#E5AE27', '#CCB749', '#B2C06B', '#99C98D', '#7FD2AF', '#66DBD1', '#4CE4F3', '#33EDFF', '#87CEEB'];
+            return colors[link.value];
+        })
+        .onNodeDragEnd(node => {
+            node.fx = node.x;
+            node.fy = node.y;
+            node.fz = node.z;
+        })
+        // .nodeThreeObject((node) => {
+        //     const group = new THREE.Group();
+        //
+        //     // 이미지 스프라이트 생성
+        //     const imgTexture = new THREE.TextureLoader().load(`https://picsum.photos/50?random=${node.id}`);
+        //     imgTexture.colorSpace = THREE.SRGBColorSpace;
+        //     const material = new THREE.SpriteMaterial({ map: imgTexture });
+        //     const imgSprite = new THREE.Sprite(material);
+        //     imgSprite.scale.set(12, 12);
+        //
+        //     // // 3D 텍스트 생성
+        //     // const textGeometry = new TextGeometry(node.name, {
+        //     //     font: font,
+        //     //     size: 1,
+        //     //     height: 0.1,
+        //     // });
+        //     // const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+        //     // const textMesh = new THREE.Mesh(textGeometry, textMaterial);
+        //     // textMesh.position.set(-2, -7, 0);  // 이미지 아래에 위치
+        //
+        //     // 그룹에 이미지와 텍스트 추가
+        //     group.add(imgSprite);
+        //
+        //     return group;
+        // });
+
+    Graph.onEngineStop(() => {
+        Graph.zoomToFit(400);
+    });
+
+    let allNodes = [];
+    let allLinks = [];
+    let currentIndex = 0;
+    const batchSize = 100;
+
+    // JSON 파일에서 데이터 로드
+    async function loadData(url) {
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            allNodes = data.nodes;
+            allLinks = data.links;
+            console.log(`Loaded ${allNodes.length} nodes and ${allLinks.length} links`);
+            addNextBatch();
+        } catch (error) {
+            console.error("Error loading data:", error);
+        }
+    }
+
+    // 다음 배치 데이터 추가
+    function addNextBatch() {
+        if (currentIndex >= allNodes.length) {
+            console.log("All data added");
+            return;
+        }
+
+        const endIndex = Math.min(currentIndex + batchSize, allNodes.length);
+        const newNodes = allNodes.slice(currentIndex, endIndex);
+        const newLinks = allLinks.filter(link =>
+            newNodes.some(node => node.id === link.source || node.id === link.target)
+        );
+
+        Graph.graphData({
+            nodes: [...Graph.graphData().nodes, ...newNodes],
+            links: [...Graph.graphData().links, ...newLinks]
+        });
+
+        currentIndex = endIndex;
+        console.log(`Added ${newNodes.length} nodes and ${newLinks.length} links`);
+
+        // 다음 배치 예약
+        setTimeout(addNextBatch, 100);
+    }
+
+    // 초기 데이터 로드
+    // loadData('imdb_actor_network.json');
+</script>
+</body>
+</html>

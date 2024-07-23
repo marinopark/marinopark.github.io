@@ -1,0 +1,1835 @@
+{
+  "nodes": [
+    {
+      "id": "고구려 주몽",
+      "group": 1
+    },
+    {
+      "id": "고구려 비류",
+      "group": 1
+    },
+    {
+      "id": "고구려 온조",
+      "group": 1
+    },
+    {
+      "id": "고구려 유리왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 무서",
+      "group": 1
+    },
+    {
+      "id": "고구려 우서",
+      "group": 1
+    },
+    {
+      "id": "고구려 대무신왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 이리",
+      "group": 1
+    },
+    {
+      "id": "고구려 민중왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 임반",
+      "group": 1
+    },
+    {
+      "id": "고구려 고국천왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 발기",
+      "group": 1
+    },
+    {
+      "id": "고구려 봉상왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 발기",
+      "group": 1
+    },
+    {
+      "id": "고구려 미천왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 설",
+      "group": 1
+    },
+    {
+      "id": "고구려 고국원왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 무",
+      "group": 1
+    },
+    {
+      "id": "고구려 소수림왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 구",
+      "group": 1
+    },
+    {
+      "id": "고구려 광개토대왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 담덕",
+      "group": 1
+    },
+    {
+      "id": "고구려 장수왕",
+      "group": 1
+    },
+    {
+      "id": "고구려 재",
+      "group": 1
+    },
+    {
+      "id": "백제 온조",
+      "group": 2
+    },
+    {
+      "id": "백제 비류",
+      "group": 2
+    },
+    {
+      "id": "백제 근초고왕",
+      "group": 2
+    },
+    {
+      "id": "백제 구수",
+      "group": 2
+    },
+    {
+      "id": "백제 진사왕",
+      "group": 2
+    },
+    {
+      "id": "백제 을초",
+      "group": 2
+    },
+    {
+      "id": "백제 아신왕",
+      "group": 2
+    },
+    {
+      "id": "백제 모",
+      "group": 2
+    },
+    {
+      "id": "백제 전지왕",
+      "group": 2
+    },
+    {
+      "id": "백제 계",
+      "group": 2
+    },
+    {
+      "id": "백제 무령왕",
+      "group": 2
+    },
+    {
+      "id": "백제 창",
+      "group": 2
+    },
+    {
+      "id": "백제 성왕",
+      "group": 2
+    },
+    {
+      "id": "백제 여창",
+      "group": 2
+    },
+    {
+      "id": "백제 천가",
+      "group": 2
+    },
+    {
+      "id": "백제 위덕왕",
+      "group": 2
+    },
+    {
+      "id": "백제 창",
+      "group": 2
+    },
+    {
+      "id": "백제 귀신",
+      "group": 2
+    },
+    {
+      "id": "신라 박혁거세",
+      "group": 3
+    },
+    {
+      "id": "신라 남해차차웅",
+      "group": 3
+    },
+    {
+      "id": "신라 유리이사금",
+      "group": 3
+    },
+    {
+      "id": "신라 구해",
+      "group": 3
+    },
+    {
+      "id": "신라 여해",
+      "group": 3
+    },
+    {
+      "id": "신라 탈해이사금",
+      "group": 3
+    },
+    {
+      "id": "신라 지증왕",
+      "group": 3
+    },
+    {
+      "id": "신라 이찬",
+      "group": 3
+    },
+    {
+      "id": "신라 법흥왕",
+      "group": 3
+    },
+    {
+      "id": "신라 입종",
+      "group": 3
+    },
+    {
+      "id": "신라 진흥왕",
+      "group": 3
+    },
+    {
+      "id": "신라 강포",
+      "group": 3
+    },
+    {
+      "id": "신라 진평왕",
+      "group": 3
+    },
+    {
+      "id": "신라 백명",
+      "group": 3
+    },
+    {
+      "id": "신라 선덕여왕",
+      "group": 3
+    },
+    {
+      "id": "신라 천명",
+      "group": 3
+    },
+    {
+      "id": "신라 진덕여왕",
+      "group": 3
+    },
+    {
+      "id": "신라 무열왕",
+      "group": 3
+    },
+    {
+      "id": "신라 춘추",
+      "group": 3
+    },
+    {
+      "id": "신라 춘명",
+      "group": 3
+    },
+    {
+      "id": "신라 문무왕",
+      "group": 3
+    },
+    {
+      "id": "신라 인문",
+      "group": 3
+    },
+    {
+      "id": "신라 신문왕",
+      "group": 3
+    },
+    {
+      "id": "신라 정명",
+      "group": 3
+    },
+    {
+      "id": "신라 효소왕",
+      "group": 3
+    },
+    {
+      "id": "신라 보충",
+      "group": 3
+    },
+    {
+      "id": "신라 경덕왕",
+      "group": 3
+    },
+    {
+      "id": "신라 현종",
+      "group": 3
+    },
+    {
+      "id": "신라 혜공왕",
+      "group": 3
+    },
+    {
+      "id": "신라 영공",
+      "group": 3
+    },
+    {
+      "id": "신라 원성왕",
+      "group": 3
+    },
+    {
+      "id": "신라 양웅",
+      "group": 3
+    },
+    {
+      "id": "신라 애장왕",
+      "group": 3
+    },
+    {
+      "id": "신라 헌창",
+      "group": 3
+    },
+    {
+      "id": "신라 헌덕왕",
+      "group": 3
+    },
+    {
+      "id": "신라 김헌",
+      "group": 3
+    },
+    {
+      "id": "신라 흥덕왕",
+      "group": 3
+    },
+    {
+      "id": "신라 김명",
+      "group": 3
+    },
+    {
+      "id": "신라 진성여왕",
+      "group": 3
+    },
+    {
+      "id": "신라 효공왕",
+      "group": 3
+    },
+    {
+      "id": "신라 의종",
+      "group": 3
+    },
+    {
+      "id": "신라 신덕왕",
+      "group": 3
+    },
+    {
+      "id": "신라 능안",
+      "group": 3
+    },
+    {
+      "id": "신라 경순왕",
+      "group": 3
+    },
+    {
+      "id": "신라 마의",
+      "group": 3
+    },
+    {
+      "id": "고려 태조",
+      "group": 4
+    },
+    {
+      "id": "고려 왕우",
+      "group": 4
+    },
+    {
+      "id": "고려 왕요",
+      "group": 4
+    },
+    {
+      "id": "고려 혜종",
+      "group": 4
+    },
+    {
+      "id": "고려 무",
+      "group": 4
+    },
+    {
+      "id": "고려 요",
+      "group": 4
+    },
+    {
+      "id": "고려 정종",
+      "group": 4
+    },
+    {
+      "id": "고려 소",
+      "group": 4
+    },
+    {
+      "id": "고려 광주",
+      "group": 4
+    },
+    {
+      "id": "고려 광종",
+      "group": 4
+    },
+    {
+      "id": "고려 요",
+      "group": 4
+    },
+    {
+      "id": "고려 소",
+      "group": 4
+    },
+    {
+      "id": "고려 경종",
+      "group": 4
+    },
+    {
+      "id": "고려 치",
+      "group": 4
+    },
+    {
+      "id": "고려 성종",
+      "group": 4
+    },
+    {
+      "id": "고려 의화",
+      "group": 4
+    },
+    {
+      "id": "고려 목종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕자",
+      "group": 4
+    },
+    {
+      "id": "고려 현종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕가",
+      "group": 4
+    },
+    {
+      "id": "고려 문종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕휘",
+      "group": 4
+    },
+    {
+      "id": "고려 순종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕관",
+      "group": 4
+    },
+    {
+      "id": "고려 숙종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕진",
+      "group": 4
+    },
+    {
+      "id": "고려 예종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕연",
+      "group": 4
+    },
+    {
+      "id": "고려 인종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕해",
+      "group": 4
+    },
+    {
+      "id": "고려 의종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕온",
+      "group": 4
+    },
+    {
+      "id": "고려 명종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕계",
+      "group": 4
+    },
+    {
+      "id": "고려 신종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕순",
+      "group": 4
+    },
+    {
+      "id": "고려 강종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕준",
+      "group": 4
+    },
+    {
+      "id": "고려 고종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕준",
+      "group": 4
+    },
+    {
+      "id": "고려 원종",
+      "group": 4
+    },
+    {
+      "id": "고려 왕심",
+      "group": 4
+    },
+    {
+      "id": "고려 충렬왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕정",
+      "group": 4
+    },
+    {
+      "id": "고려 충선왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕창",
+      "group": 4
+    },
+    {
+      "id": "고려 충숙왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕종",
+      "group": 4
+    },
+    {
+      "id": "고려 충혜왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕기",
+      "group": 4
+    },
+    {
+      "id": "고려 충목왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕욱",
+      "group": 4
+    },
+    {
+      "id": "고려 충정왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕장",
+      "group": 4
+    },
+    {
+      "id": "고려 공민왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕선",
+      "group": 4
+    },
+    {
+      "id": "고려 우왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕요",
+      "group": 4
+    },
+    {
+      "id": "고려 창왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕석",
+      "group": 4
+    },
+    {
+      "id": "고려 공양왕",
+      "group": 4
+    },
+    {
+      "id": "고려 왕승",
+      "group": 4
+    },
+    {
+      "id": "조선 태조",
+      "group": 5
+    },
+    {
+      "id": "조선 이인계",
+      "group": 5
+    },
+    {
+      "id": "조선 이인백",
+      "group": 5
+    },
+    {
+      "id": "조선 정종",
+      "group": 5
+    },
+    {
+      "id": "조선 방원",
+      "group": 5
+    },
+    {
+      "id": "조선 방간",
+      "group": 5
+    },
+    {
+      "id": "조선 태종",
+      "group": 5
+    },
+    {
+      "id": "조선 방원",
+      "group": 5
+    },
+    {
+      "id": "조선 방간",
+      "group": 5
+    },
+    {
+      "id": "조선 세종",
+      "group": 5
+    },
+    {
+      "id": "조선 양녕",
+      "group": 5
+    },
+    {
+      "id": "조선 효령",
+      "group": 5
+    },
+    {
+      "id": "조선 문종",
+      "group": 5
+    },
+    {
+      "id": "조선 평원",
+      "group": 5
+    },
+    {
+      "id": "조선 단종",
+      "group": 5
+    },
+    {
+      "id": "조선 세조",
+      "group": 5
+    },
+    {
+      "id": "조선 안평",
+      "group": 5
+    },
+    {
+      "id": "조선 예종",
+      "group": 5
+    },
+    {
+      "id": "조선 덕종",
+      "group": 5
+    },
+    {
+      "id": "조선 성종",
+      "group": 5
+    },
+    {
+      "id": "조선 월산",
+      "group": 5
+    },
+    {
+      "id": "조선 연산군",
+      "group": 5
+    },
+    {
+      "id": "조선 진성",
+      "group": 5
+    },
+    {
+      "id": "조선 중종",
+      "group": 5
+    },
+    {
+      "id": "조선 회천",
+      "group": 5
+    },
+    {
+      "id": "조선 인종",
+      "group": 5
+    },
+    {
+      "id": "조선 경혼",
+      "group": 5
+    },
+    {
+      "id": "조선 명종",
+      "group": 5
+    },
+    {
+      "id": "조선 하성",
+      "group": 5
+    },
+    {
+      "id": "조선 선조",
+      "group": 5
+    },
+    {
+      "id": "조선 하성",
+      "group": 5
+    },
+    {
+      "id": "조선 광해군",
+      "group": 5
+    },
+    {
+      "id": "조선 영창",
+      "group": 5
+    },
+    {
+      "id": "조선 인조",
+      "group": 5
+    },
+    {
+      "id": "조선 능원",
+      "group": 5
+    },
+    {
+      "id": "조선 효종",
+      "group": 5
+    },
+    {
+      "id": "조선 인평",
+      "group": 5
+    },
+    {
+      "id": "조선 현종",
+      "group": 5
+    },
+    {
+      "id": "조선 여긴",
+      "group": 5
+    },
+    {
+      "id": "조선 숙종",
+      "group": 5
+    },
+    {
+      "id": "조선 경안",
+      "group": 5
+    },
+    {
+      "id": "조선 경종",
+      "group": 5
+    },
+    {
+      "id": "조선 연잉",
+      "group": 5
+    },
+    {
+      "id": "조선 영조",
+      "group": 5
+    },
+    {
+      "id": "조선 연잉",
+      "group": 5
+    },
+    {
+      "id": "조선 정조",
+      "group": 5
+    },
+    {
+      "id": "조선 은신",
+      "group": 5
+    },
+    {
+      "id": "조선 순조",
+      "group": 5
+    },
+    {
+      "id": "조선 문효",
+      "group": 5
+    },
+    {
+      "id": "조선 헌종",
+      "group": 5
+    },
+    {
+      "id": "조선 휘경",
+      "group": 5
+    },
+    {
+      "id": "조선 철종",
+      "group": 5
+    },
+    {
+      "id": "조선 원범",
+      "group": 5
+    },
+    {
+      "id": "조선 고종",
+      "group": 5
+    },
+    {
+      "id": "조선 재황",
+      "group": 5
+    },
+    {
+      "id": "조선 순종",
+      "group": 5
+    },
+    {
+      "id": "조선 영친",
+      "group": 5
+    }
+  ],
+  "links": [
+    {
+      "source": "고구려 주몽",
+      "target": "고구려 유리왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 유리왕",
+      "target": "고구려 대무신왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 대무신왕",
+      "target": "고구려 민중왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 민중왕",
+      "target": "고구려 고국천왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 고국천왕",
+      "target": "고구려 봉상왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 봉상왕",
+      "target": "고구려 미천왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 미천왕",
+      "target": "고구려 고국원왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 고국원왕",
+      "target": "고구려 소수림왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 소수림왕",
+      "target": "고구려 광개토대왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 광개토대왕",
+      "target": "고구려 장수왕",
+      "value": 10
+    },
+    {
+      "source": "고구려 주몽",
+      "target": "고구려 비류",
+      "value": 4
+    },
+    {
+      "source": "고구려 주몽",
+      "target": "고구려 온조",
+      "value": 2
+    },
+    {
+      "source": "고구려 유리왕",
+      "target": "고구려 무서",
+      "value": 4
+    },
+    {
+      "source": "고구려 유리왕",
+      "target": "고구려 우서",
+      "value": 4
+    },
+    {
+      "source": "고구려 대무신왕",
+      "target": "고구려 이리",
+      "value": 5
+    },
+    {
+      "source": "고구려 민중왕",
+      "target": "고구려 임반",
+      "value": 3
+    },
+    {
+      "source": "고구려 고국천왕",
+      "target": "고구려 발기",
+      "value": 3
+    },
+    {
+      "source": "고구려 봉상왕",
+      "target": "고구려 발기",
+      "value": 1
+    },
+    {
+      "source": "고구려 미천왕",
+      "target": "고구려 설",
+      "value": 2
+    },
+    {
+      "source": "고구려 고국원왕",
+      "target": "고구려 무",
+      "value": 2
+    },
+    {
+      "source": "고구려 소수림왕",
+      "target": "고구려 구",
+      "value": 3
+    },
+    {
+      "source": "고구려 광개토대왕",
+      "target": "고구려 담덕",
+      "value": 2
+    },
+    {
+      "source": "고구려 장수왕",
+      "target": "고구려 재",
+      "value": 3
+    },
+    {
+      "source": "백제 온조",
+      "target": "백제 근초고왕",
+      "value": 10
+    },
+    {
+      "source": "백제 근초고왕",
+      "target": "백제 진사왕",
+      "value": 10
+    },
+    {
+      "source": "백제 진사왕",
+      "target": "백제 아신왕",
+      "value": 10
+    },
+    {
+      "source": "백제 아신왕",
+      "target": "백제 전지왕",
+      "value": 10
+    },
+    {
+      "source": "백제 전지왕",
+      "target": "백제 무령왕",
+      "value": 10
+    },
+    {
+      "source": "백제 무령왕",
+      "target": "백제 성왕",
+      "value": 10
+    },
+    {
+      "source": "백제 성왕",
+      "target": "백제 위덕왕",
+      "value": 10
+    },
+    {
+      "source": "백제 온조",
+      "target": "백제 비류",
+      "value": 1
+    },
+    {
+      "source": "백제 근초고왕",
+      "target": "백제 구수",
+      "value": 3
+    },
+    {
+      "source": "백제 진사왕",
+      "target": "백제 을초",
+      "value": 3
+    },
+    {
+      "source": "백제 아신왕",
+      "target": "백제 모",
+      "value": 2
+    },
+    {
+      "source": "백제 전지왕",
+      "target": "백제 계",
+      "value": 1
+    },
+    {
+      "source": "백제 무령왕",
+      "target": "백제 창",
+      "value": 3
+    },
+    {
+      "source": "백제 성왕",
+      "target": "백제 여창",
+      "value": 3
+    },
+    {
+      "source": "백제 성왕",
+      "target": "백제 천가",
+      "value": 2
+    },
+    {
+      "source": "백제 위덕왕",
+      "target": "백제 창",
+      "value": 5
+    },
+    {
+      "source": "백제 위덕왕",
+      "target": "백제 귀신",
+      "value": 2
+    },
+    {
+      "source": "신라 박혁거세",
+      "target": "신라 남해차차웅",
+      "value": 10
+    },
+    {
+      "source": "신라 남해차차웅",
+      "target": "신라 유리이사금",
+      "value": 10
+    },
+    {
+      "source": "신라 유리이사금",
+      "target": "신라 탈해이사금",
+      "value": 10
+    },
+    {
+      "source": "신라 탈해이사금",
+      "target": "신라 지증왕",
+      "value": 10
+    },
+    {
+      "source": "신라 지증왕",
+      "target": "신라 법흥왕",
+      "value": 10
+    },
+    {
+      "source": "신라 법흥왕",
+      "target": "신라 진흥왕",
+      "value": 10
+    },
+    {
+      "source": "신라 진흥왕",
+      "target": "신라 진평왕",
+      "value": 10
+    },
+    {
+      "source": "신라 진평왕",
+      "target": "신라 선덕여왕",
+      "value": 10
+    },
+    {
+      "source": "신라 선덕여왕",
+      "target": "신라 진덕여왕",
+      "value": 10
+    },
+    {
+      "source": "신라 진덕여왕",
+      "target": "신라 무열왕",
+      "value": 10
+    },
+    {
+      "source": "신라 무열왕",
+      "target": "신라 문무왕",
+      "value": 10
+    },
+    {
+      "source": "신라 문무왕",
+      "target": "신라 신문왕",
+      "value": 10
+    },
+    {
+      "source": "신라 신문왕",
+      "target": "신라 효소왕",
+      "value": 10
+    },
+    {
+      "source": "신라 효소왕",
+      "target": "신라 경덕왕",
+      "value": 10
+    },
+    {
+      "source": "신라 경덕왕",
+      "target": "신라 혜공왕",
+      "value": 10
+    },
+    {
+      "source": "신라 혜공왕",
+      "target": "신라 원성왕",
+      "value": 10
+    },
+    {
+      "source": "신라 원성왕",
+      "target": "신라 애장왕",
+      "value": 10
+    },
+    {
+      "source": "신라 애장왕",
+      "target": "신라 헌덕왕",
+      "value": 10
+    },
+    {
+      "source": "신라 헌덕왕",
+      "target": "신라 흥덕왕",
+      "value": 10
+    },
+    {
+      "source": "신라 흥덕왕",
+      "target": "신라 진성여왕",
+      "value": 10
+    },
+    {
+      "source": "신라 진성여왕",
+      "target": "신라 효공왕",
+      "value": 10
+    },
+    {
+      "source": "신라 효공왕",
+      "target": "신라 신덕왕",
+      "value": 10
+    },
+    {
+      "source": "신라 신덕왕",
+      "target": "신라 경순왕",
+      "value": 10
+    },
+    {
+      "source": "신라 유리이사금",
+      "target": "신라 구해",
+      "value": 2
+    },
+    {
+      "source": "신라 유리이사금",
+      "target": "신라 여해",
+      "value": 3
+    },
+    {
+      "source": "신라 지증왕",
+      "target": "신라 이찬",
+      "value": 1
+    },
+    {
+      "source": "신라 법흥왕",
+      "target": "신라 입종",
+      "value": 1
+    },
+    {
+      "source": "신라 진흥왕",
+      "target": "신라 강포",
+      "value": 5
+    },
+    {
+      "source": "신라 진평왕",
+      "target": "신라 백명",
+      "value": 2
+    },
+    {
+      "source": "신라 선덕여왕",
+      "target": "신라 천명",
+      "value": 3
+    },
+    {
+      "source": "신라 무열왕",
+      "target": "신라 춘추",
+      "value": 4
+    },
+    {
+      "source": "신라 무열왕",
+      "target": "신라 춘명",
+      "value": 3
+    },
+    {
+      "source": "신라 문무왕",
+      "target": "신라 인문",
+      "value": 2
+    },
+    {
+      "source": "신라 신문왕",
+      "target": "신라 정명",
+      "value": 4
+    },
+    {
+      "source": "신라 효소왕",
+      "target": "신라 보충",
+      "value": 3
+    },
+    {
+      "source": "신라 경덕왕",
+      "target": "신라 현종",
+      "value": 1
+    },
+    {
+      "source": "신라 혜공왕",
+      "target": "신라 영공",
+      "value": 3
+    },
+    {
+      "source": "신라 원성왕",
+      "target": "신라 양웅",
+      "value": 2
+    },
+    {
+      "source": "신라 애장왕",
+      "target": "신라 헌창",
+      "value": 4
+    },
+    {
+      "source": "신라 헌덕왕",
+      "target": "신라 김헌",
+      "value": 1
+    },
+    {
+      "source": "신라 흥덕왕",
+      "target": "신라 김명",
+      "value": 2
+    },
+    {
+      "source": "신라 효공왕",
+      "target": "신라 의종",
+      "value": 3
+    },
+    {
+      "source": "신라 신덕왕",
+      "target": "신라 능안",
+      "value": 5
+    },
+    {
+      "source": "신라 경순왕",
+      "target": "신라 마의",
+      "value": 5
+    },
+    {
+      "source": "고려 태조",
+      "target": "고려 혜종",
+      "value": 10
+    },
+    {
+      "source": "고려 혜종",
+      "target": "고려 정종",
+      "value": 10
+    },
+    {
+      "source": "고려 정종",
+      "target": "고려 광종",
+      "value": 10
+    },
+    {
+      "source": "고려 광종",
+      "target": "고려 경종",
+      "value": 10
+    },
+    {
+      "source": "고려 경종",
+      "target": "고려 성종",
+      "value": 10
+    },
+    {
+      "source": "고려 성종",
+      "target": "고려 목종",
+      "value": 10
+    },
+    {
+      "source": "고려 목종",
+      "target": "고려 현종",
+      "value": 10
+    },
+    {
+      "source": "고려 현종",
+      "target": "고려 문종",
+      "value": 10
+    },
+    {
+      "source": "고려 문종",
+      "target": "고려 순종",
+      "value": 10
+    },
+    {
+      "source": "고려 순종",
+      "target": "고려 숙종",
+      "value": 10
+    },
+    {
+      "source": "고려 숙종",
+      "target": "고려 예종",
+      "value": 10
+    },
+    {
+      "source": "고려 예종",
+      "target": "고려 인종",
+      "value": 10
+    },
+    {
+      "source": "고려 인종",
+      "target": "고려 의종",
+      "value": 10
+    },
+    {
+      "source": "고려 의종",
+      "target": "고려 명종",
+      "value": 10
+    },
+    {
+      "source": "고려 명종",
+      "target": "고려 신종",
+      "value": 10
+    },
+    {
+      "source": "고려 신종",
+      "target": "고려 강종",
+      "value": 10
+    },
+    {
+      "source": "고려 강종",
+      "target": "고려 고종",
+      "value": 10
+    },
+    {
+      "source": "고려 고종",
+      "target": "고려 원종",
+      "value": 10
+    },
+    {
+      "source": "고려 원종",
+      "target": "고려 충렬왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충렬왕",
+      "target": "고려 충선왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충선왕",
+      "target": "고려 충숙왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충숙왕",
+      "target": "고려 충혜왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충혜왕",
+      "target": "고려 충목왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충목왕",
+      "target": "고려 충정왕",
+      "value": 10
+    },
+    {
+      "source": "고려 충정왕",
+      "target": "고려 공민왕",
+      "value": 10
+    },
+    {
+      "source": "고려 공민왕",
+      "target": "고려 우왕",
+      "value": 10
+    },
+    {
+      "source": "고려 우왕",
+      "target": "고려 창왕",
+      "value": 10
+    },
+    {
+      "source": "고려 창왕",
+      "target": "고려 공양왕",
+      "value": 10
+    },
+    {
+      "source": "고려 태조",
+      "target": "고려 왕우",
+      "value": 5
+    },
+    {
+      "source": "고려 태조",
+      "target": "고려 왕요",
+      "value": 2
+    },
+    {
+      "source": "고려 혜종",
+      "target": "고려 무",
+      "value": 3
+    },
+    {
+      "source": "고려 혜종",
+      "target": "고려 요",
+      "value": 1
+    },
+    {
+      "source": "고려 정종",
+      "target": "고려 소",
+      "value": 5
+    },
+    {
+      "source": "고려 정종",
+      "target": "고려 광주",
+      "value": 1
+    },
+    {
+      "source": "고려 광종",
+      "target": "고려 요",
+      "value": 5
+    },
+    {
+      "source": "고려 광종",
+      "target": "고려 소",
+      "value": 3
+    },
+    {
+      "source": "고려 경종",
+      "target": "고려 치",
+      "value": 2
+    },
+    {
+      "source": "고려 성종",
+      "target": "고려 의화",
+      "value": 4
+    },
+    {
+      "source": "고려 목종",
+      "target": "고려 왕자",
+      "value": 5
+    },
+    {
+      "source": "고려 현종",
+      "target": "고려 왕가",
+      "value": 2
+    },
+    {
+      "source": "고려 문종",
+      "target": "고려 왕휘",
+      "value": 5
+    },
+    {
+      "source": "고려 순종",
+      "target": "고려 왕관",
+      "value": 2
+    },
+    {
+      "source": "고려 숙종",
+      "target": "고려 왕진",
+      "value": 2
+    },
+    {
+      "source": "고려 예종",
+      "target": "고려 왕연",
+      "value": 3
+    },
+    {
+      "source": "고려 인종",
+      "target": "고려 왕해",
+      "value": 3
+    },
+    {
+      "source": "고려 의종",
+      "target": "고려 왕온",
+      "value": 3
+    },
+    {
+      "source": "고려 명종",
+      "target": "고려 왕계",
+      "value": 3
+    },
+    {
+      "source": "고려 신종",
+      "target": "고려 왕순",
+      "value": 5
+    },
+    {
+      "source": "고려 강종",
+      "target": "고려 왕준",
+      "value": 4
+    },
+    {
+      "source": "고려 고종",
+      "target": "고려 왕준",
+      "value": 4
+    },
+    {
+      "source": "고려 원종",
+      "target": "고려 왕심",
+      "value": 1
+    },
+    {
+      "source": "고려 충렬왕",
+      "target": "고려 왕정",
+      "value": 2
+    },
+    {
+      "source": "고려 충선왕",
+      "target": "고려 왕창",
+      "value": 3
+    },
+    {
+      "source": "고려 충숙왕",
+      "target": "고려 왕종",
+      "value": 1
+    },
+    {
+      "source": "고려 충혜왕",
+      "target": "고려 왕기",
+      "value": 4
+    },
+    {
+      "source": "고려 충목왕",
+      "target": "고려 왕욱",
+      "value": 3
+    },
+    {
+      "source": "고려 충정왕",
+      "target": "고려 왕장",
+      "value": 4
+    },
+    {
+      "source": "고려 공민왕",
+      "target": "고려 왕선",
+      "value": 3
+    },
+    {
+      "source": "고려 우왕",
+      "target": "고려 왕요",
+      "value": 3
+    },
+    {
+      "source": "고려 창왕",
+      "target": "고려 왕석",
+      "value": 1
+    },
+    {
+      "source": "고려 공양왕",
+      "target": "고려 왕승",
+      "value": 4
+    },
+    {
+      "source": "조선 태조",
+      "target": "조선 정종",
+      "value": 10
+    },
+    {
+      "source": "조선 정종",
+      "target": "조선 태종",
+      "value": 10
+    },
+    {
+      "source": "조선 태종",
+      "target": "조선 세종",
+      "value": 10
+    },
+    {
+      "source": "조선 세종",
+      "target": "조선 문종",
+      "value": 10
+    },
+    {
+      "source": "조선 문종",
+      "target": "조선 단종",
+      "value": 10
+    },
+    {
+      "source": "조선 단종",
+      "target": "조선 세조",
+      "value": 10
+    },
+    {
+      "source": "조선 세조",
+      "target": "조선 예종",
+      "value": 10
+    },
+    {
+      "source": "조선 예종",
+      "target": "조선 성종",
+      "value": 10
+    },
+    {
+      "source": "조선 성종",
+      "target": "조선 연산군",
+      "value": 10
+    },
+    {
+      "source": "조선 연산군",
+      "target": "조선 중종",
+      "value": 10
+    },
+    {
+      "source": "조선 중종",
+      "target": "조선 인종",
+      "value": 10
+    },
+    {
+      "source": "조선 인종",
+      "target": "조선 명종",
+      "value": 10
+    },
+    {
+      "source": "조선 명종",
+      "target": "조선 선조",
+      "value": 10
+    },
+    {
+      "source": "조선 선조",
+      "target": "조선 광해군",
+      "value": 10
+    },
+    {
+      "source": "조선 광해군",
+      "target": "조선 인조",
+      "value": 10
+    },
+    {
+      "source": "조선 인조",
+      "target": "조선 효종",
+      "value": 10
+    },
+    {
+      "source": "조선 효종",
+      "target": "조선 현종",
+      "value": 10
+    },
+    {
+      "source": "조선 현종",
+      "target": "조선 숙종",
+      "value": 10
+    },
+    {
+      "source": "조선 숙종",
+      "target": "조선 경종",
+      "value": 10
+    },
+    {
+      "source": "조선 경종",
+      "target": "조선 영조",
+      "value": 10
+    },
+    {
+      "source": "조선 영조",
+      "target": "조선 정조",
+      "value": 10
+    },
+    {
+      "source": "조선 정조",
+      "target": "조선 순조",
+      "value": 10
+    },
+    {
+      "source": "조선 순조",
+      "target": "조선 헌종",
+      "value": 10
+    },
+    {
+      "source": "조선 헌종",
+      "target": "조선 철종",
+      "value": 10
+    },
+    {
+      "source": "조선 철종",
+      "target": "조선 고종",
+      "value": 10
+    },
+    {
+      "source": "조선 고종",
+      "target": "조선 순종",
+      "value": 10
+    },
+    {
+      "source": "조선 태조",
+      "target": "조선 이인계",
+      "value": 2
+    },
+    {
+      "source": "조선 태조",
+      "target": "조선 이인백",
+      "value": 2
+    },
+    {
+      "source": "조선 정종",
+      "target": "조선 방원",
+      "value": 3
+    },
+    {
+      "source": "조선 정종",
+      "target": "조선 방간",
+      "value": 1
+    },
+    {
+      "source": "조선 태종",
+      "target": "조선 방원",
+      "value": 4
+    },
+    {
+      "source": "조선 태종",
+      "target": "조선 방간",
+      "value": 1
+    },
+    {
+      "source": "조선 세종",
+      "target": "조선 양녕",
+      "value": 4
+    },
+    {
+      "source": "조선 세종",
+      "target": "조선 효령",
+      "value": 4
+    },
+    {
+      "source": "조선 문종",
+      "target": "조선 평원",
+      "value": 5
+    },
+    {
+      "source": "조선 세조",
+      "target": "조선 안평",
+      "value": 2
+    },
+    {
+      "source": "조선 예종",
+      "target": "조선 덕종",
+      "value": 2
+    },
+    {
+      "source": "조선 성종",
+      "target": "조선 월산",
+      "value": 2
+    },
+    {
+      "source": "조선 연산군",
+      "target": "조선 진성",
+      "value": 1
+    },
+    {
+      "source": "조선 중종",
+      "target": "조선 회천",
+      "value": 2
+    },
+    {
+      "source": "조선 인종",
+      "target": "조선 경혼",
+      "value": 3
+    },
+    {
+      "source": "조선 명종",
+      "target": "조선 하성",
+      "value": 3
+    },
+    {
+      "source": "조선 선조",
+      "target": "조선 하성",
+      "value": 1
+    },
+    {
+      "source": "조선 광해군",
+      "target": "조선 영창",
+      "value": 5
+    },
+    {
+      "source": "조선 인조",
+      "target": "조선 능원",
+      "value": 3
+    },
+    {
+      "source": "조선 효종",
+      "target": "조선 인평",
+      "value": 4
+    },
+    {
+      "source": "조선 현종",
+      "target": "조선 여긴",
+      "value": 5
+    },
+    {
+      "source": "조선 숙종",
+      "target": "조선 경안",
+      "value": 4
+    },
+    {
+      "source": "조선 경종",
+      "target": "조선 연잉",
+      "value": 1
+    },
+    {
+      "source": "조선 영조",
+      "target": "조선 연잉",
+      "value": 1
+    },
+    {
+      "source": "조선 정조",
+      "target": "조선 은신",
+      "value": 2
+    },
+    {
+      "source": "조선 순조",
+      "target": "조선 문효",
+      "value": 1
+    },
+    {
+      "source": "조선 헌종",
+      "target": "조선 휘경",
+      "value": 4
+    },
+    {
+      "source": "조선 철종",
+      "target": "조선 원범",
+      "value": 5
+    },
+    {
+      "source": "조선 고종",
+      "target": "조선 재황",
+      "value": 3
+    },
+    {
+      "source": "조선 순종",
+      "target": "조선 영친",
+      "value": 5
+    }
+  ]
+}
