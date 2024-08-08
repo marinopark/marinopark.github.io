@@ -5,49 +5,120 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NDFC - People Network Example</title>
     <script src="./3d-force-graph.js"></script>
+    <script src="./force-graph.js"></script>
+    <script src="./dat.gui.js"></script>
 </head>
 <body>
+<style>
+    body {margin:0;padding:0;}
+    .node-label {font-size: 0.3em;}
+    .node-img {max-width:20px;border-radius: 20px;}
+</style>
 <div id="3d-graph"></div>
 
+<script type="importmap">{ "imports": { "three": "./three.module.js" }}</script>
 <script type="module">
-    import * as THREE from '//unpkg.com/three/build/three.module.js';
+    // import * as THREE from './three.module.js';
+    import { CSS2DRenderer, CSS2DObject } from './CSS2DRenderer.js';
+    const container = document.getElementById('3d-graph');
+
+    // controls
+    const settings = {
+        is2D: false,
+    };
+    const gui = new dat.GUI();
+    gui.add(settings, "is2D")
+        .name("2D Mode")
+        .onChange(() => {
+            console.log("2D Mode checked: ", settings.is2D);
+            clearContainer();
+            if(settings.is2D){
+                init2D();
+            }else{
+                init3D();
+            }
+        });
+
 
     const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
 
     const NODE_REL_SIZE = 1;
-    const Graph = ForceGraph3D({ antialias: true, alpha: true })(document.getElementById('3d-graph'))
-        .jsonUrl('./imdb_actor_network.json')
-        .linkResolution(12)
-        .backgroundColor('#101020')
-        .nodeRelSize(NODE_REL_SIZE)
-        .nodeLabel('name')
-        .nodeAutoColorBy('group')
-        .onNodeClick(node => alert('id : ' + node.id + '클릭!'))
-        .onLinkRightClick(link => alert(link.source.id + ' -> ' + link.target.id))
-        // .linkDirectionalArrowLength(7)
-        // .linkDirectionalArrowRelPos(1)
-        .nodeRelSize(6)
-        .linkWidth(2)
-        .linkDirectionalParticles("value")
-        .linkDirectionalParticleWidth(0.8)
-        .linkDirectionalParticleSpeed(d => d.value * 0.0005)
-        .linkColor(link => {
-            const colors = ['#FFA500', '#E5AE27', '#CCB749', '#B2C06B', '#99C98D', '#7FD2AF', '#66DBD1', '#4CE4F3', '#33EDFF', '#87CEEB'];
-            return colors[link.value];
-        })
-        .onNodeDragEnd(node => {
-            node.fx = node.x;
-            node.fy = node.y;
-            node.fz = node.z;
-        })
-        .nodeThreeObject(({ img }) => {
-            const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
-            imgTexture.colorSpace = THREE.SRGBColorSpace;
-            const material = new THREE.SpriteMaterial({ map: imgTexture, color: 0xffffff, transparent: true, alpha: true });
-            const sprite = new THREE.Sprite(material);
-            sprite.scale.set(12, 12);
-            return sprite;
-        })
+
+    const init3D = () => {
+        // const Graph = ForceGraph3D({
+        //     extraRenderers: [new CSS2DRenderer()],
+        //     antialias: true,
+        //     alpha: true })(container)
+        //     .linkResolution(6)
+        //     .backgroundColor('#101020')
+        //     .nodeRelSize(NODE_REL_SIZE)
+        //     .nodeColor(() => 'rgba(0,0,0,0)')
+        //     // .nodeLabel('name')
+        //     .nodeAutoColorBy('group')
+        //     .onNodeClick(node => alert('id : ' + node.id + '클릭!'))
+        //     .onLinkRightClick(link => alert(link.source.id + ' -> ' + link.target.id))
+        //     // .linkDirectionalArrowLength(7)
+        //     // .linkDirectionalArrowRelPos(1)
+        //     .linkWidth(1)
+        //     .linkDirectionalParticles("value")
+        //     .linkDirectionalParticleWidth(0.8)
+        //     .linkDirectionalParticleSpeed(d => d.value * 0.0005)
+        //     .linkColor(link => {
+        //         const colors = ['#FFA500', '#E5AE27', '#CCB749', '#B2C06B', '#99C98D', '#7FD2AF', '#66DBD1', '#4CE4F3', '#33EDFF', '#87CEEB'];
+        //         return colors[link.value];
+        //     })
+        //     .onNodeDragEnd(node => {
+        //         node.fx = node.x;
+        //         node.fy = node.y;
+        //         node.fz = node.z;
+        //     })
+        //     .nodeThreeObject(node => {
+        //         const nodeEl = document.createElement('div');
+        //         nodeEl.textContent = node.name;
+        //         nodeEl.style.color = '#FFF';
+        //         nodeEl.className = 'node-label';
+        //         const nodeImg = document.createElement('img');
+        //         nodeImg.src = `./imgs/${imgs[node.group]}`;
+        //         nodeImg.className = 'node-img';
+        //
+        //         nodeEl.appendChild(nodeImg);
+        //
+        //         const sprite = new CSS2DObject(nodeEl);
+        //         return sprite;
+        //     })
+        //     .nodeThreeObjectExtend(true);
+
+        const Graph = ForceGraph3D()(containerRef.current)
+            .graphData(graphData)
+            .nodeLabel(node => `${node.name} (${node.movies} movies)`)
+            .nodeColor(() => '#FFA500')
+            .nodeVal(node => Math.sqrt(node.movies))
+            .linkLabel(link => `${link.movie} (Betweenness: ${link.betweenness.toFixed(2)})`)
+            .linkWidth(link => link.betweenness * 2)
+            .linkColor(link => {
+                const redComponent = Math.floor(link.betweenness * 255);
+                return `rgb(${redComponent}, 0, 0)`;
+            })
+            .nodeThreeObject(node => {
+                const sprite = new SpriteText(node.name);
+                sprite.color = 'white';
+                sprite.textHeight = 8;
+                return sprite;
+            })
+            .nodeThreeObjectExtend(true)
+            .d3Force('link')
+            .distance(link => 100 / (link.betweenness + 0.1))
+            .d3VelocityDecay(0.3);
+
+        // 성능 최적화
+        Graph.d3Force('charge').strength(-20);
+        Graph.numDimensions(3);
+        Graph.dagMode(null);
+
+        fetch('./imdb_actor_network.json').then(res => res.json()).then(data => {
+            Graph.graphData(data)
+        });
+        container._forceGraph = Graph;
         // .nodeThreeObject((node) => {
         //     const group = new THREE.Group();
         //
@@ -74,9 +145,41 @@
         //     return group;
         // });
 
-    Graph.onEngineStop(() => {
-        Graph.zoomToFit(400);
-    });
+        // Graph.onEngineStop(() => {
+        //     Graph.zoomToFit(400);
+        // });
+    }
+
+    const init2D = () => {
+        const Graph = ForceGraph()(container)
+            Graph.nodeId('id')
+                .nodeVal('val')
+                .nodeLabel('name')
+                .nodeAutoColorBy('group')
+                .linkSource('source')
+                .linkTarget('target')
+
+        fetch('./imdb_actor_network.json').then(res => res.json()).then(data => {
+            Graph.graphData(data)
+        });
+
+        container._forceGraph = Graph;
+    }
+
+    const clearContainer = () => {
+        if (container._forceGraph) {
+            if (container._forceGraph && typeof container._forceGraph.pauseAnimation === 'function') {
+                container._forceGraph.pauseAnimation();
+            }
+            container._forceGraph._destructor();
+        }
+
+        while (container.firstChild) {
+            container.removeChild(container.firstChild);
+        };
+    }
+
+    init3D();
 
     let allNodes = [];
     let allLinks = [];
