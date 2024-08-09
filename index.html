@@ -7,6 +7,37 @@
     <script src="./3d-force-graph.js"></script>
     <script src="./force-graph.js"></script>
     <script src="./dat.gui.js"></script>
+    <script src="./d3.min.js"></script>
+    <style>
+        body { margin: 0; }
+        #3d-graph { width: 100%; height: 100vh; }
+        #loading {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        #progress-bar {
+            width: 50%;
+            height: 20px;
+            background-color: #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        #progress {
+            width: 0;
+            height: 100%;
+            background-color: #4CAF50;
+            transition: width 0.5s;
+        }
+    </style>
 </head>
 <body>
 <style>
@@ -15,12 +46,28 @@
     .node-img {max-width:20px;border-radius: 20px;}
 </style>
 <div id="3d-graph"></div>
+<div id="loading">
+    <div id="progress-bar">
+        <div id="progress"></div>
+    </div>
+    <p id="progress-text">Loading: 0%</p>
+</div>
 
 <script type="importmap">{ "imports": { "three": "./three.module.js" }}</script>
 <script type="module">
-    // import * as THREE from './three.module.js';
+    import SpriteText from "./three-spritetext.mjs";
+    import * as THREE from './three.module.js';
     import { CSS2DRenderer, CSS2DObject } from './CSS2DRenderer.js';
     const container = document.getElementById('3d-graph');
+
+    const progressBar = document.getElementById('progress');
+    const progressText = document.getElementById('progress-text');
+    const loadingDiv = document.getElementById('loading');
+
+    function updateProgress(value) {
+        progressBar.style.width = `${value}%`;
+        progressText.textContent = `Loading: ${value}%`;
+    }
 
     // controls
     const settings = {
@@ -38,11 +85,7 @@
                 init3D();
             }
         });
-
-
     const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
-
-    const NODE_REL_SIZE = 1;
 
     const init3D = () => {
         // const Graph = ForceGraph3D({
@@ -88,35 +131,163 @@
         //     })
         //     .nodeThreeObjectExtend(true);
 
-        const Graph = ForceGraph3D()(containerRef.current)
-            .graphData(graphData)
-            .nodeLabel(node => `${node.name} (${node.movies} movies)`)
-            .nodeColor(() => '#FFA500')
-            .nodeVal(node => Math.sqrt(node.movies))
-            .linkLabel(link => `${link.movie} (Betweenness: ${link.betweenness.toFixed(2)})`)
-            .linkWidth(link => link.betweenness * 2)
-            .linkColor(link => {
-                const redComponent = Math.floor(link.betweenness * 255);
-                return `rgb(${redComponent}, 0, 0)`;
-            })
+        const highlightNodes = new Set();
+        const highlightLinks = new Set();
+        let highlightNode = null;
+        let hoverNode = null;
+        let tickCount = 0, maxTicks = 0;
+
+        function updateHighlight() {
+            Graph
+                .nodeColor(Graph.nodeColor())
+                .linkWidth(Graph.linkWidth())
+                .linkDirectionalParticles(Graph.linkDirectionalParticles())
+                .nodeThreeObject(node => {
+                    if(highlightNodes.has(node)){
+                        const sprite = new SpriteText(node.name);
+                        sprite.material.depthWrite = false; // make sprite background transparent
+                        sprite.color = '#fff';
+                        sprite.textHeight = (highlightNode === node) ? 12 : 8;
+                        return sprite;
+                    }
+                });
+        }
+
+        const Graph = ForceGraph3D({
+            antialias: true,
+                alpha: true
+            })(container)
+            .nodeLabel('name')
             .nodeThreeObject(node => {
-                const sprite = new SpriteText(node.name);
-                sprite.color = 'white';
-                sprite.textHeight = 8;
-                return sprite;
+                if(highlightNodes.has(node)){
+                    const sprite = new SpriteText(node.id);
+                    sprite.material.depthWrite = false; // make sprite background transparent
+                    sprite.color = '#fff';
+                    sprite.textHeight = 8;
+                    return sprite;
+                }
             })
-            .nodeThreeObjectExtend(true)
-            .d3Force('link')
-            .distance(link => 100 / (link.betweenness + 0.1))
-            .d3VelocityDecay(0.3);
+            .nodeColor(node => {
+                let nodeColor = highlightNode ? 'rgba(180,180,180,0.2)' : 'rgba(180,180,180,0.7)';
+
+                if(highlightNodes.has(node)){
+                    nodeColor = (node === highlightNode) ? 'rgba(255,0,0,1)' : 'rgba(255,180,0,1)';
+                }
+
+                if(node === hoverNode){
+                    nodeColor = 'rgba(255,200,0,1.0)';
+                }
+
+                return nodeColor;
+            })
+            .linkColor(link => {
+                let linkColor = highlightLinks.has(link) ? 'rgba(255,100,0,0.7)' : 'rgba(250,250,250,0.2)';
+                return linkColor;
+            })
+            .nodeVal(node => Math.pow(node?.density, 1))
+            .linkWidth(link => Math.sqrt(link.value * 1.25))
+            .linkDirectionalParticles(link => highlightLinks.has(link) ? 4 : 0)
+            .linkDirectionalParticleWidth(4)
+            .onNodeClick(node => {
+                highlightNodes.clear();
+                highlightLinks.clear();
+                if (node && node.neighbors !== undefined && node.links !== undefined) {
+                    highlightNodes.add(node);
+                    node.neighbors.forEach(neighbor => highlightNodes.add(neighbor[0]));
+                    node.links.forEach(link => highlightLinks.add(link));
+                }
+                highlightNode = node || null;
+
+                updateHighlight();
+
+                const distance = 1000;
+                const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+                Graph.cameraPosition(
+                    { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+                    node,
+                    3000
+                );
+            })
+            .onNodeHover(node => {
+                hoverNode = node || null;
+                updateHighlight();
+            })
+            .onEngineTick(() => {
+                loadingDiv.style.display = 'flex';
+                tickCount = tickCount + (maxTicks * 0.005);
+                let progress = Math.min(100, Math.floor((tickCount / maxTicks) * 100));
+                if(isNaN(progress)) progress = 0;
+                updateProgress(progress);
+                console.log('progress > ', progress)
+            })
+            .onEngineStop(() => {
+                updateProgress(100);
+                setTimeout(() => {
+                    loadingDiv.style.display = 'none';
+                }, 500);
+            });
+
+            // .nodeColor('#fff') // 클러스터에 따른 색상
+            // .nodeThreeObject(node => {
+            //     const nodeEl = document.createElement('div');
+            //     nodeEl.textContent = node.name;
+            //     nodeEl.style.color = '#fff';
+            //     nodeEl.className = 'node-label';
+            //     // const nodeImg = document.createElement('img');
+            //     // nodeImg.src = node.img;
+            //     // nodeImg.className = 'node-img';
+            //     //
+            //     // nodeEl.appendChild(nodeImg);
+            //
+            //     const sprite = new CSS2DObject(nodeEl);
+            //     return sprite;
+            // })
+            // .nodeThreeObjectExtend(true)
+            // .linkWidth(link => Math.sqrt(link.value * 1.25))
+            // .linkDirectionalParticles(2)
+            // .linkDirectionalParticleSpeed(d => d.value * 0.001)
+            // .d3Force('link', d3.forceLink().id(d => d.id).distance(link => (link.value || 1)))
+            // .d3Force('charge', d3.forceManyBody().strength(-10))
+            // // .d3Force('center', d3.forceCenter().strength(0.1))
+            // .d3Force('collide', d3.forceCollide(node => Math.cbrt(node.density || 1) * 5))
+
+        // 그래프 회전 애니메이션
+        // let angle = 0;
+        // const distance = 500;
+        // setInterval(() => {
+        //     Graph.cameraPosition({
+        //         x: distance * Math.sin(angle),
+        //         z: distance * Math.cos(angle)
+        //     });
+        //     angle += Math.PI / 1000;
+        // }, 30);
 
         // 성능 최적화
-        Graph.d3Force('charge').strength(-20);
-        Graph.numDimensions(3);
-        Graph.dagMode(null);
+        // Graph.d3Force('charge').strength(-20);
+        // Graph.numDimensions(3);
+        // Graph.dagMode(null);
 
-        fetch('./imdb_actor_network.json').then(res => res.json()).then(data => {
-            Graph.graphData(data)
+        fetch('./imdb_actor_network_enhanced.json').then(res => res.json()).then(data => {
+            let resData = data;
+            maxTicks = resData.nodes.length + resData.links.length;
+            for(const link of resData?.links){
+                for(const node of resData.nodes) {
+                    if(node.density === undefined) node.density = 0;
+
+                    if(node.id === link.source || node.id === link.target) {
+                        node.density++;
+                        if(!node.neighbors) node.neighbors = [];
+                        if(!node.links) node.links = [];
+                        node.links.push(link);
+
+                        const targetId = node.id === link.source ? link.target : link.source;
+                        const neighborsNode = resData.nodes.filter(nodeItem => nodeItem.id === targetId);
+                        if(neighborsNode.length > 0)  node.neighbors.push(neighborsNode);
+                    }
+                }
+            }
+
+            Graph.graphData(resData);
         });
         container._forceGraph = Graph;
         // .nodeThreeObject((node) => {
@@ -159,7 +330,7 @@
                 .linkSource('source')
                 .linkTarget('target')
 
-        fetch('./imdb_actor_network.json').then(res => res.json()).then(data => {
+        fetch('./imdb_actor_network_enhanced.json').then(res => res.json()).then(data => {
             Graph.graphData(data)
         });
 
