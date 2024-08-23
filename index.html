@@ -64,6 +64,8 @@
     const progressText = document.getElementById('progress-text');
     const loadingDiv = document.getElementById('loading');
 
+    let Graph = null;
+
     function updateProgress(value) {
         progressBar.style.width = `${value}%`;
         progressText.textContent = `Loading: ${value}%`;
@@ -72,6 +74,8 @@
     // controls
     const settings = {
         is2D: false,
+        chargeStrength: -15,
+        linkDistance: 10
     };
     const gui = new dat.GUI();
     gui.add(settings, "is2D")
@@ -86,50 +90,23 @@
             }
         });
 
-    const init3D = () => {
-        // const Graph = ForceGraph3D({
-        //     extraRenderers: [new CSS2DRenderer()],
-        //     antialias: true,
-        //     alpha: true })(container)
-        //     .linkResolution(6)
-        //     .backgroundColor('#101020')
-        //     .nodeRelSize(NODE_REL_SIZE)
-        //     .nodeColor(() => 'rgba(0,0,0,0)')
-        //     // .nodeLabel('name')
-        //     .nodeAutoColorBy('group')
-        //     .onNodeClick(node => alert('id : ' + node.id + '클릭!'))
-        //     .onLinkRightClick(link => alert(link.source.id + ' -> ' + link.target.id))
-        //     // .linkDirectionalArrowLength(7)
-        //     // .linkDirectionalArrowRelPos(1)
-        //     .linkWidth(1)
-        //     .linkDirectionalParticles("value")
-        //     .linkDirectionalParticleWidth(0.8)
-        //     .linkDirectionalParticleSpeed(d => d.value * 0.0005)
-        //     .linkColor(link => {
-        //         const colors = ['#FFA500', '#E5AE27', '#CCB749', '#B2C06B', '#99C98D', '#7FD2AF', '#66DBD1', '#4CE4F3', '#33EDFF', '#87CEEB'];
-        //         return colors[link.value];
-        //     })
-        //     .onNodeDragEnd(node => {
-        //         node.fx = node.x;
-        //         node.fy = node.y;
-        //         node.fz = node.z;
-        //     })
-        //     .nodeThreeObject(node => {
-        //         const nodeEl = document.createElement('div');
-        //         nodeEl.textContent = node.name;
-        //         nodeEl.style.color = '#FFF';
-        //         nodeEl.className = 'node-label';
-        //         const nodeImg = document.createElement('img');
-        //         nodeImg.src = `./imgs/${imgs[node.group]}`;
-        //         nodeImg.className = 'node-img';
-        //
-        //         nodeEl.appendChild(nodeImg);
-        //
-        //         const sprite = new CSS2DObject(nodeEl);
-        //         return sprite;
-        //     })
-        //     .nodeThreeObjectExtend(true);
+    // 반발력(Charge Strength) 조절을 위한 슬라이더 추가
+    gui.add(settings, "chargeStrength", -500, 0)
+        .name("Charge Strength")
+        .onChange(() => {
+            Graph.d3Force('charge').strength(settings.chargeStrength);
+            Graph.d3ReheatSimulation();
+        });
 
+    // 링크 거리(Link Distance) 조절을 위한 슬라이더 추가
+    gui.add(settings, "linkDistance", 50, 300)
+        .name("Link Distance")
+        .onChange(() => {
+            Graph.d3Force('link').distance(settings.linkDistance);
+            Graph.d3ReheatSimulation();
+        });
+
+    const init3D = () => {
         const highlightNodes = new Set();
         const highlightLinks = new Set();
         let highlightNode = null;
@@ -157,7 +134,7 @@
                 .nodeThreeObject(node => nodeThreeObject(node));
         }
 
-        const Graph = ForceGraph3D({
+        Graph = ForceGraph3D({
             antialias: true,
                 alpha: true
             })(container)
@@ -184,6 +161,9 @@
             .linkWidth(link => Math.sqrt(link.value * 1.25))
             .linkDirectionalParticles(link => highlightLinks.has(link) ? 4 : 0)
             .linkDirectionalParticleWidth(4)
+            .d3Force('charge', d3.forceManyBody().strength(-15)) // 반발력 증가
+            .d3Force('link', d3.forceLink().distance(10)) // 링크 거리 증가
+            .d3Force('center', d3.forceCenter())
             .onNodeClick(node => {
                 highlightNodes.clear();
                 highlightLinks.clear();
@@ -236,45 +216,6 @@
                 }, 500);
             });
 
-            // .nodeColor('#fff') // 클러스터에 따른 색상
-            // .nodeThreeObject(node => {
-            //     const nodeEl = document.createElement('div');
-            //     nodeEl.textContent = node.name;
-            //     nodeEl.style.color = '#fff';
-            //     nodeEl.className = 'node-label';
-            //     // const nodeImg = document.createElement('img');
-            //     // nodeImg.src = node.img;
-            //     // nodeImg.className = 'node-img';
-            //     //
-            //     // nodeEl.appendChild(nodeImg);
-            //
-            //     const sprite = new CSS2DObject(nodeEl);
-            //     return sprite;
-            // })
-            // .nodeThreeObjectExtend(true)
-            // .linkWidth(link => Math.sqrt(link.value * 1.25))
-            // .linkDirectionalParticles(2)
-            // .linkDirectionalParticleSpeed(d => d.value * 0.001)
-            // .d3Force('link', d3.forceLink().id(d => d.id).distance(link => (link.value || 1)))
-            // .d3Force('charge', d3.forceManyBody().strength(-10))
-            // // .d3Force('center', d3.forceCenter().strength(0.1))
-            // .d3Force('collide', d3.forceCollide(node => Math.cbrt(node.density || 1) * 5))
-
-        // 그래프 회전 애니메이션
-        // let angle = 0;
-        // const distance = 500;
-        // setInterval(() => {
-        //     Graph.cameraPosition({
-        //         x: distance * Math.sin(angle),
-        //         z: distance * Math.cos(angle)
-        //     });
-        //     angle += Math.PI / 1000;
-        // }, 30);
-
-        // 성능 최적화
-        // Graph.d3Force('charge').strength(-20);
-        // Graph.numDimensions(3);
-        // Graph.dagMode(null);
 
         fetch('./imdb_actor_network_enhanced.json').then(res => res.json()).then(data => {
             let resData = data;
@@ -299,52 +240,147 @@
             Graph.graphData(resData);
         });
         container._forceGraph = Graph;
-        // .nodeThreeObject((node) => {
-        //     const group = new THREE.Group();
-        //
-        //     // 이미지 스프라이트 생성
-        //     const imgTexture = new THREE.TextureLoader().load(`https://picsum.photos/50?random=${node.id}`);
-        //     imgTexture.colorSpace = THREE.SRGBColorSpace;
-        //     const material = new THREE.SpriteMaterial({ map: imgTexture });
-        //     const imgSprite = new THREE.Sprite(material);
-        //     imgSprite.scale.set(12, 12);
-        //
-        //     // // 3D 텍스트 생성
-        //     // const textGeometry = new TextGeometry(node.name, {
-        //     //     font: font,
-        //     //     size: 1,
-        //     //     height: 0.1,
-        //     // });
-        //     // const textMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-        //     // const textMesh = new THREE.Mesh(textGeometry, textMaterial);
-        //     // textMesh.position.set(-2, -7, 0);  // 이미지 아래에 위치
-        //
-        //     // 그룹에 이미지와 텍스트 추가
-        //     group.add(imgSprite);
-        //
-        //     return group;
-        // });
-
-        // Graph.onEngineStop(() => {
-        //     Graph.zoomToFit(400);
-        // });
     }
 
     const init2D = () => {
-        const Graph = ForceGraph()(container)
-            Graph.nodeId('id')
-                .nodeVal('val')
-                .nodeLabel('name')
-                .nodeAutoColorBy('group')
-                .linkSource('source')
-                .linkTarget('target')
+        const highlightNodes = new Set();
+        const highlightLinks = new Set();
+        let highlightNode = null;
+        let hoverNode = null;
+        let tickCount = 0, maxTicks = 0;
+        let isLoading = false;
+
+        function getNodeColor(node) {
+            if (node === highlightNode) return 'rgba(255,0,0,1)';
+            if (highlightNodes.has(node)) return 'rgba(255,180,0,1)';
+            if (node === hoverNode) return 'rgba(255,200,0,1.0)';
+            return highlightNode ? 'rgba(180,180,180,0.2)' : 'rgba(180,180,180,0.7)';
+        }
+
+        function getNodeSize(node) {
+            // 기본 크기를 3으로 설정하고, density에 따라 크기를 증가시킵니다.
+            // Math.log를 사용하여 큰 density 값에 대해 크기 증가를 완화합니다.
+            return 3 + Math.log(node.density + 1) * 2;
+        }
+
+        function nodeCanvasObject(node, ctx) {
+            const nodeSize = getNodeSize(node);
+            const fontSize = (node === highlightNode) ? 12 : 8;
+            ctx.font = `${fontSize}px Pretendard-Regular`;
+
+            const nodeColor = getNodeColor(node);
+
+            // Draw node circle
+            ctx.beginPath();
+            ctx.arc(node.x, node.y, nodeSize, 0, 2 * Math.PI, false);
+            ctx.fillStyle = nodeColor;
+            ctx.fill();
+
+            // Draw node label
+            if (highlightNodes.has(node)) {
+                ctx.fillStyle = '#565656';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText(node.name, node.x, node.y + nodeSize + 5);
+            }
+        }
+
+        function updateHighlight() {
+            Graph.linkWidth(Graph.linkWidth())
+                .linkDirectionalParticles(Graph.linkDirectionalParticles());
+        }
+
+        Graph = ForceGraph()
+        (container)
+            .nodeLabel('name')
+            .nodeCanvasObject((node, ctx) => nodeCanvasObject(node, ctx))
+            .nodePointerAreaPaint((node, color, ctx) => {
+                const nodeSize = getNodeSize(node);
+                ctx.beginPath();
+                ctx.arc(node.x, node.y, nodeSize, 0, 2 * Math.PI, false);
+                ctx.fillStyle = color;
+                ctx.fill();
+            })
+            .linkColor(link => {
+                return highlightLinks.has(link) ? 'rgba(255,100,0,0.7)' : 'rgba(250,250,250,0.2)';
+            })
+            .linkWidth(link => Math.sqrt(link.value * 1.25))
+            .linkDirectionalParticles(link => highlightLinks.has(link) ? 4 : 0)
+            .linkDirectionalParticleWidth(4)
+            .d3Force('charge', d3.forceManyBody().strength(-15)) // 반발력 증가
+            .d3Force('link', d3.forceLink().distance(10)) // 링크 거리 증가
+            .d3Force('center', d3.forceCenter())
+            .onNodeClick(node => {
+                highlightNodes.clear();
+                highlightLinks.clear();
+                if (node && node.neighbors !== undefined && node.links !== undefined) {
+                    highlightNodes.add(node);
+                    node.neighbors.forEach(neighbor => highlightNodes.add(neighbor[0]));
+                    node.links.forEach(link => highlightLinks.add(link));
+                }
+                highlightNode = node || null;
+
+                if (node) {
+                    Graph.centerAt(node.x, node.y, 1000);
+                    Graph.zoom(2, 1000);
+                }
+
+                updateHighlight();
+            })
+            .onNodeHover(node => {
+                hoverNode = node || null;
+                updateHighlight();
+            })
+            .onNodeDrag(node => {
+                node.fx = node.x;
+                node.fy = node.y;
+            })
+            .onNodeDragEnd(node => {
+                node.fx = node.x;
+                node.fy = node.y;
+            })
+            .onEngineTick(() => {
+                if (!isLoading) {
+                    loadingDiv.style.display = 'flex';
+                    tickCount = tickCount + (maxTicks * 0.005);
+                    let progress = Math.min(100, Math.floor((tickCount / maxTicks) * 100));
+                    if (isNaN(progress)) progress = 0;
+                    updateProgress(progress);
+                    console.log('progress > ', progress)
+                }
+            })
+            .onEngineStop(() => {
+                updateProgress(100);
+                isLoading = true;
+                setTimeout(() => {
+                    loadingDiv.style.display = 'none';
+                }, 500);
+            });
 
         fetch('./imdb_actor_network_enhanced.json').then(res => res.json()).then(data => {
-            Graph.graphData(data)
-        });
+            let resData = data;
+            maxTicks = resData.nodes.length + resData.links.length;
+            for (const link of resData?.links) {
+                for (const node of resData.nodes) {
+                    if (node.density === undefined) node.density = 0;
 
+                    if (node.id === link.source || node.id === link.target) {
+                        node.density++;
+                        if (!node.neighbors) node.neighbors = [];
+                        if (!node.links) node.links = [];
+                        node.links.push(link);
+
+                        const targetId = node.id === link.source ? link.target : link.source;
+                        const neighborsNode = resData.nodes.filter(nodeItem => nodeItem.id === targetId);
+                        if (neighborsNode.length > 0) node.neighbors.push(neighborsNode);
+                    }
+                }
+            }
+
+            Graph.graphData(resData);
+        });
         container._forceGraph = Graph;
-    }
+    };
 
     const clearContainer = () => {
         if (container._forceGraph) {
